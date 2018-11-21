@@ -97,4 +97,28 @@ class Subdomain_Route extends Kohana_Route {
         }
         return FALSE;
     }
+
+    /**
+     * Create a URL from a route name, with subdomain support
+     *
+     * @param   string  $name       route name
+     * @param   array   $params     URI parameters
+     * @param   mixed   $protocol   protocol string or boolean, adds protocol and domain
+     * @return  string
+     * @throws Kohana_Exception
+     */
+    public static function url($name, array $params = NULL, $protocol = NULL)
+    {
+        $route = Route::get($name);
+
+        // Create a URI with the route and convert it to a URL
+        if ($route->is_external())
+            return $route->uri($params);
+
+        $subdomain = $route->_subdomain[0] ?? FALSE;
+        if (!$subdomain) {
+            return URL::site($route->uri($params), $protocol);
+        }
+        return URL::site($route->uri($params), $protocol, TRUE, $subdomain);
+    }
 }
