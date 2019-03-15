@@ -15,7 +15,7 @@
  * @copyright  (c) since 2018 Koseven Team
  * @license    https://koseven.ga/LICENSE.md
  */
-class Subdomain_Route extends Kohana_Route {
+class Subdomain_Route extends KO7_Route {
 
     /**
      * Wildcard e.g *.example.com
@@ -105,7 +105,7 @@ class Subdomain_Route extends Kohana_Route {
      * @param   array   $params     URI parameters
      * @param   mixed   $protocol   protocol string or boolean, adds protocol and domain
      * @return  string
-     * @throws Kohana_Exception
+     * @throws KO7_Exception
      */
     public static function url($name, array $params = NULL, $protocol = NULL)
     {

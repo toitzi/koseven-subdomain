@@ -15,7 +15,7 @@
  * @copyright  (c) since 2018 Koseven Team
  * @license    https://koseven.ga/LICENSE.md
  */
-class Subdomain_Request extends Kohana_Request {
+class Subdomain_Request extends KO7_Request {
 
     /**
      * Request Subdomain
@@ -55,7 +55,7 @@ class Subdomain_Request extends Kohana_Request {
     {
         if($base_url === NULL)
         {
-            $base_url = parse_url(Kohana::$base_url, PHP_URL_HOST);
+            $base_url = parse_url(KO7::$base_url, PHP_URL_HOST);
         }
         if($host === NULL)
         {
